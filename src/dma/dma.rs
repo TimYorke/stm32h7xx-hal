@@ -632,10 +632,12 @@ macro_rules! dma_stream {
 
                 #[inline(always)]
                 #[cfg(not(feature = "rm0455"))]
-                fn set_trbuff(&mut self, trbuff: bool) {
+                fn set_trbuff(&mut self, _trbuff: bool) {
                     //NOTE(unsafe) We only access the registers that belongs to the StreamX
-                    let dma = unsafe { &*I::ptr() };
-                    dma.st[Self::NUMBER].cr.modify(|_, w| w.trbuff().bit(trbuff));
+                    
+                    //let dma = unsafe { &*I::ptr() };
+                    //dma.st[Self::NUMBER].cr.modify(|_, w| w.trbuff().bit(trbuff));
+                    todo!()
                 }
 
                 #[inline(always)]
